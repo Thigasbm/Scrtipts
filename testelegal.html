@@ -1,0 +1,45 @@
+<html>
+<script>
+function formatTime(date) {
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(() => {
+  const date = new Date();
+  const timeString = formatTime(date);
+  console.log(timeString);
+}, 1000);
+
+function getTimeInTimeZone(timeZone) {
+  const options = { timeZone: timeZone, hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+  return new Intl.DateTimeFormat([], options).format(new Date());
+}
+
+// Exibir a hora atual em Nova York
+async function getTimeInCity(city) {
+  const apiKey = 'sua_chave_de_api_do_google_maps';
+  const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const location = data.results[0].geometry.location;
+  const timestamp = Math.floor(Date.now() / 1000);
+  const timezoneUrl = `https://maps.googleapis.com/maps/api/timezone/json?location=${location.lat},${location.lng}&timestamp=${timestamp}&key=${apiKey}`;
+  const timezoneResponse = await fetch(timezoneUrl);
+  const timezoneData = await timezoneResponse.json();
+  const offset = timezoneData.rawOffset + timezoneData.dstOffset;
+  const date = new Date(Date.now() + offset * 1000);
+  const options = { hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+  return new Intl.DateTimeFormat([], options).format(date);
+}
+
+// Exibir a hora atual em São Paulo
+getTimeInCity('São Paulo').then((time) => {
+  console.log('Hora em São Paulo: ', time);
+});
+
+
+</script>
+</html>
