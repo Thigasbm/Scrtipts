@@ -1,0 +1,41 @@
+<html>
+<body>
+    Rua: <br>
+    <input type="text" id="rua"><br>
+    Bairro: <br>
+    <input type="text" id="bairro"> <br>
+    Número: <br>
+    <input type="text" id="numero"> <br>
+
+
+    <script>
+        function ConverterDolarParaReais(valor){ 
+        //nao aparece no sistema, para fazer aparecer, ir em F12 no navegador e escrever o nome da função no console, e colocar o valor no ()
+            return valor * 5;
+        }
+        
+        function ConverterReaisParaDolar(valor){
+            return valor / 5;
+        }
+        var i=1;
+       
+        while (i < 10){
+        console.log(ConverterDolarParaReais(i * 5))
+        i++
+        }
+
+        var camporua = document.getElementById('rua')
+        var campobairro = document.getElementById('bairro')
+        var camponumero = document.getElementById('numero')
+
+        camporua.addEventListener('change', function () {
+            console.log(retornarendereco(camporua.value,campobairro.value,camponumero.value))
+        })
+
+        function retornarendereco(campo, bairro, numero){
+            return "Rua: " + bairro + " Bairro: " + bairro + " Número: " + numero;
+        }
+    </script>
+    
+</body>
+</html>
