@@ -1,10 +1,13 @@
 <html>
     <title>Joguinho2</title>
 <body>
+    <center>
     <canvas id="canvas" height="20" width="20" style="border: 1px solid #CCC;
-    height: 500px; width: 500px; image-rendering: pixelated;"></canvas>  
-</body>
+    height: 500px; width: 500px; image-rendering: pixelated;"></canvas>
+    
+
 <script>
+    
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 
@@ -24,22 +27,21 @@
     document.addEventListener('keydown', moverJogador)
  
     function moverJogador(evento){
-       
-        if(evento.key == 'ArrowUp'){
+        if(evento.key == 'ArrowUp' || evento.key == 'w'){
             if (jogador1.y > 0 ){
                 jogador1.y--
         }}
     
-        if(evento.key == 'ArrowDown'){
+        if(evento.key == 'ArrowDown'|| evento.key == 's'){
             if (jogador1.y < 19 ){
             jogador1.y++
             
         }}
-        if(evento.key == 'ArrowRight'){
+        if(evento.key == 'ArrowRight' || evento.key == 'd'){
             if (jogador1.x < 19 ){
             jogador1.x++
         }}
-        if(evento.key == 'ArrowLeft'){
+        if(evento.key == 'ArrowLeft' || evento.key == 'a'){
             if (jogador1.x > 0 ){
             jogador1.x--
         }}
@@ -78,10 +80,10 @@
     }
 
     function adicionarFrutasAutomaticamente(){
-        setInterval(adicionarFruta, 1000);
+        setInterval(adicionarFruta, 100);
     }
     function adicionarFruta(){
-        if (jogo.frutas.length < 15){
+        if (jogo.frutas.length < 10){
         jogo.frutas.push({x: getRandom(19), y: getRandom (19), cor: 'purple'});
         desenharJogo();
         }
@@ -91,7 +93,16 @@
         return Math.floor(Math.random() * max + 1);
     }
     
+    var p = {
+    jogadores: [],
+    frutas: [],
+    pontuacao: 0,
+};
 
+// reiniciar o jogo
+p.jogadores = [];
+p.frutas = [];
+p.pontuacao = 0;
 
     function checarColisao(jogador){
         var frutas = jogo.frutas;
@@ -100,11 +111,25 @@
             if (fruta.x == jogador.x && fruta.y == jogador.y){
                 //remover fruta
                 frutas.splice(i, 1);
+                //contagem de pontos
+                p.pontuacao++;
             }
+            //não funciona o log
+            console.log("Pontuação: " + p.pontuacao);
+             // atualiza a pontuação na página
+            atualizarPontuacao();
         }
+        
     }
 
+    function atualizarPontuacao() {
+        var pontuacaoJogo = document.getElementById("pontos");
+        pontuacaoJogo.innerHTML = "PONTUAÇÃO: " + p.pontuacao;
+    }
     adicionarFrutasAutomaticamente();
+  
 
 </script>
+<p id="pontos"></p>
+</body>
 </html>
