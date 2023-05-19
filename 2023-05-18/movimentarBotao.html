@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <center>
+        Melissa convidou eu pra uma viagem q vao fazer final do ano, e tao precisando de gente pro ônibus.
+        Bora?
+        <p>
+        <button id="btSim">Sim</button>
+        <button id="btNao">Não</button>
+        </p>
+    <script>
+        var btNao = document.getElementById('btNao');
+    
+        btNao.addEventListener('mousemove', function(){
+            btNao.style.position = 'absolute'
+            btNao.style.top = gerarNumeroAleatorio(950);
+            btNao.style.left = gerarNumeroAleatorio(1850)
+        })
+
+        function gerarNumeroAleatorio(maximo){
+            return Math.floor(Math.random() * (maximo + 1))
+        }
+
+        
+    </script>
+    </body>
+</html>
