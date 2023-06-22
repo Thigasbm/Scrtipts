@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="bairro" placeholder="seu bairro"><br>
+    <input type="text" id="rua" placeholder="sua rua"><br>
+    <input type="text" id="numero" placeholder="seu numero"><br>
+    <button onclick="enviar()">Enviar</button>
+
+    <script>
+        function enviar(){
+            var bairro = document.getElementById('bairro').value;
+            var rua = document.getElementById('rua').value;
+            var numero = document.getElementById('numero').value;
+            alert ('Seu endereço é Bairro:' + bairro + ', Rua: ' + rua + ' e N°:' + numero);
+        }
+    </script>
+</body>
+</html>

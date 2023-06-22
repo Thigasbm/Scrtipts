@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Conversor de Real para Dolar (hoje está R$4.76)<br>
+    <input type="number" id="real" placeholder="Quanto quer converter?"> <input type="text" id="converter" disabled placeholder="conversão"><br>
+    <button onclick="converter()">Converter</button><br>
+
+    <script>
+        function converter(){
+            var dolar =  document.getElementById('real').value; 
+            var real = 4.76;
+            var converte = dolar / real;
+            document.getElementById('converter').value = '$' + converte 
+        }
+    </script>
+</body>
+</html>

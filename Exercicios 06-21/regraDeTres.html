@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Deixe um campo em branco<br>
+    <input type="number" id="n1" placeholder="Coloque 1° número">
+    <input type="number" id="n2" placeholder="Coloque 2° número"><br>
+    <input type="number" id="n3" placeholder="Coloque 3° número">   
+    <input type="number" id="n4" placeholder="Coloque 4° número"><br>
+    <button onclick="regra()">Calcular</button>
+
+    <script>
+    function regra(){
+        var n1 = parseFloat(document.getElementById('n1').value);
+        var n2 = parseFloat(document.getElementById('n2').value);
+        var n3 = parseFloat(document.getElementById('n3').value);
+        var n4 = parseFloat(document.getElementById('n4').value);
+
+        if (isNaN(n1)){
+            var total = (n2*n3)/n4;
+            alert(total);
+            console.log(total);
+        }else if (isNaN(n2)){
+            var total = (n1*n4)/n3;
+            alert(total);
+            console.log(total);
+        }else if (isNaN(n3)){
+            var total = (n1*n4)/n2;
+            alert(total);
+            console.log(total);
+        }else if (isNaN(n4)){
+            var total = (n3*n2)/n1;
+            alert(total);
+            console.log(total);
+        }
+    }
+    </script>
+</body>
+</html>

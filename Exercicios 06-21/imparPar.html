@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="n" placeholder="escolha um número"><br>
+    <button onclick="imparPar()">Definir</button>
+
+    <script>
+        function imparPar(){
+            var n = document.getElementById('n').value;
+            
+            if (n % 2 === 0){
+                alert ('Par');
+            }
+            else{
+                alert ('Impar');
+            }
+        }
+        //fazer console.log(n) para saber se está chegando o número
+            
+        
+    </script>
+</body>
+</html>
